@@ -12,7 +12,7 @@ const props = defineProps<{
     </div>
     <div>
       <p class="text-xl font-bold lg:text-5.2xl">“{{ props.quote }}”</p>
-      <footer class="mt-2 lg:mt-4 font-bold text-almost-white lg:text-3xl">
+      <footer class="mt-2 lg:mt-4 font-bold text-almost-white lg:text-3xl font-neue">
         {{ props.movie }}
       </footer>
     </div>
