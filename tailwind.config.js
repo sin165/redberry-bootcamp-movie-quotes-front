@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        neue: ['Helvetica Neue', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif']
       },
       fontSize: {
