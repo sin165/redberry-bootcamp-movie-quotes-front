@@ -4,6 +4,8 @@ import HomeAuthInput from '@/components/home/HomeAuthInput.vue'
 import BaseButton from '../base/BaseButton.vue'
 import { useForm } from 'vee-validate'
 
+const emit = defineEmits(['loginClick'])
+
 const { handleSubmit } = useForm()
 const onSubmit = handleSubmit((values) => {
   console.log(values)
@@ -48,7 +50,8 @@ const onSubmit = handleSubmit((values) => {
         <BaseButton class="w-full">Get started</BaseButton>
       </form>
       <p class="text-gray-dark text-center mt-8">
-        Already have an account? <a class="text-blue-link underline">Log in</a>
+        Already have an account?
+        <button class="text-blue-link underline" @click="emit('loginClick')">Log in</button>
       </p>
     </div>
   </LayoutsAuth>
