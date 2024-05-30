@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        neue: ['Helvetica Neue', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif']
       },
       fontSize: {
@@ -17,12 +18,15 @@ export default {
         13: '3.25rem',
         17: '4.25rem',
         17.5: '4.375rem',
+        30: '7.5rem',
         42.5: '10.625rem',
+        52.5: '13.125rem',
         75: '18.75rem',
         78: '19.5rem',
         82: '20.5rem',
         107: '26.75rem',
         121.25: '30.3125rem',
+        150: '37.5rem',
         177.5: '44.375rem',
         202: '50.5rem',
         208: '52rem',
@@ -36,6 +40,9 @@ export default {
         '41%': '41.25%',
         '54%': '54.42%'
       },
+      borderRadius: {
+        '0.5xl': '0.625rem'
+      },
       colors: {
         beige: '#DDCCAA',
         crimson: {
@@ -45,7 +52,19 @@ export default {
           700: '#CC0E10',
           800: '#B80D0F'
         },
+        gray: {
+          light: '#CED4DA',
+          dark: '#6C757D'
+        },
+        blue: {
+          link: '#0D6EFD'
+        },
+        night: '#222030',
+        darkened: '#0000008A',
         'almost-white': '#D9D9D9'
+      },
+      boxShadow: {
+        outline: '0px 0px 0px 4px #0D6EFD40'
       },
       backgroundImage: {
         'linear-dark-bottom':
