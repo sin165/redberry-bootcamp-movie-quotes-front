@@ -56,9 +56,15 @@ export default {
           light: '#CED4DA',
           dark: '#6C757D'
         },
+        blue: {
+          link: '#0D6EFD'
+        },
         night: '#222030',
         darkened: '#0000008A',
         'almost-white': '#D9D9D9'
+      },
+      boxShadow: {
+        outline: '0px 0px 0px 4px #0D6EFD40'
       },
       backgroundImage: {
         'linear-dark-bottom':
