@@ -3,13 +3,22 @@ import LayoutsAuth from '@/layouts/LayoutsAuth.vue'
 import HomeAuthInput from '@/components/home/HomeAuthInput.vue'
 import BaseButton from '../base/BaseButton.vue'
 import { useForm } from 'vee-validate'
+import { useLogin } from '@/composables/auth/useLogin'
 
-const emit = defineEmits(['registerClick'])
+const emit = defineEmits<{
+  registerClick: []
+  emailNotVerified: [email: string]
+}>()
+
+const { data, status, loading, errorMessage, login } = useLogin()
 
 const { handleSubmit, defineField } = useForm()
 const [remember, rememberAttrs] = defineField('remember')
-const onSubmit = handleSubmit((values) => {
-  console.log(values)
+const onSubmit = handleSubmit(async (values) => {
+  await login(values)
+  if (status.value === 403 && data.value.email) {
+    emit('emailNotVerified', data.value.email)
+  }
 })
 </script>
 
@@ -40,7 +49,8 @@ const onSubmit = handleSubmit((values) => {
           </label>
           <button @click.prevent class="text-blue-link underline">Forgot password</button>
         </div>
-        <BaseButton class="w-full">Sign in</BaseButton>
+        <p v-if="errorMessage" class="text-crimson-500 text-sm mt-1">{{ errorMessage }}</p>
+        <BaseButton class="w-full" :loading="loading">Sign in</BaseButton>
       </form>
       <p class="text-gray-dark text-center mt-8">
         Don't have an account
