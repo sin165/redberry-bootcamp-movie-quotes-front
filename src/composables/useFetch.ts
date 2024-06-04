@@ -25,7 +25,7 @@ export function useFetch(path: string, method = 'GET', withXSRF = false) {
     }
 
     const body = JSON.stringify(formValues.value)
-    if (body) {
+    if (body !== '{}') {
       options.body = body
     }
 
@@ -34,7 +34,9 @@ export function useFetch(path: string, method = 'GET', withXSRF = false) {
     }
 
     const url = new URL(path)
-    url.search = new URLSearchParams(queryParams.value).toString()
+    if (JSON.stringify(queryParams.value) !== '{}') {
+      url.search = new URLSearchParams(queryParams.value).toString()
+    }
 
     try {
       if (withXSRF) {
