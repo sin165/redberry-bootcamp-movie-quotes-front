@@ -7,6 +7,7 @@ import { useLogin } from '@/composables/auth/useLogin'
 
 const emit = defineEmits<{
   registerClick: []
+  forgotPasswordClick: []
   emailNotVerified: [email: string]
 }>()
 
@@ -47,7 +48,9 @@ const onSubmit = handleSubmit(async (values) => {
             <input v-model="remember" v-bind="rememberAttrs" type="checkbox" class="size-4 mb-1" />
             <span class="text-white">Remember me</span>
           </label>
-          <button @click.prevent class="text-blue-link underline">Forgot password</button>
+          <button @click.prevent="emit('forgotPasswordClick')" class="text-blue-link underline">
+            Forgot password
+          </button>
         </div>
         <p v-if="errorMessage" class="text-crimson-500 text-sm mt-1">{{ errorMessage }}</p>
         <BaseButton class="w-full" :loading="loading">Sign in</BaseButton>

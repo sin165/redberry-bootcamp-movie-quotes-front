@@ -11,6 +11,7 @@ import LayoutsAuth from '@/layouts/LayoutsAuth.vue'
       <h2 class="font-medium text-2xl text-center"><slot name="title"></slot></h2>
       <p class="text-center my-6"><slot name="text"></slot></p>
       <div class="flex justify-center"><slot name="button"></slot></div>
+      <div><slot name="extra"></slot></div>
     </div>
   </LayoutsAuth>
 </template>

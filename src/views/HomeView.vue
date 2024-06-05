@@ -5,6 +5,8 @@ import HomeAuthLogin from '@/components/home/HomeAuthLogin.vue'
 import HomeAuthEmailNotVerified from '@/components/home/HomeAuthEmailNotVerified.vue'
 import HomeAuthVerificationEmailSent from '@/components/home/HomeAuthVerificationEmailSent.vue'
 import HomeAuthAccountActivated from '@/components/home/HomeAuthAccountActivated.vue'
+import HomeAuthForgotPassword from '@/components/home/HomeAuthForgotPassword.vue'
+import HomeAuthPasswordResetEmailSent from '@/components/home/HomeAuthPasswordResetEmailSent.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useFetch } from '@/composables/useFetch'
@@ -15,6 +17,8 @@ const loginOpen = ref(false)
 const emailNotVerifiedOpen = ref(false)
 const verificationEmailSentOpen = ref(false)
 const accountActivatedOpen = ref(false)
+const forgotPasswordOpen = ref(false)
+const passwordResetEmailSentOpen = ref(false)
 const linkExpired = ref(false)
 const emailAddress = ref('')
 
@@ -22,10 +26,16 @@ const switchToLogin = () => {
   loginOpen.value = true
   registerOpen.value = false
   accountActivatedOpen.value = false
+  forgotPasswordOpen.value = false
 }
 
 const switchToRegister = () => {
   registerOpen.value = true
+  loginOpen.value = false
+}
+
+const switchToForgotPassword = () => {
+  forgotPasswordOpen.value = true
   loginOpen.value = false
 }
 
@@ -44,6 +54,12 @@ const handleRegistered = (email: string) => {
 const handleSent = () => {
   verificationEmailSentOpen.value = true
   emailNotVerifiedOpen.value = false
+}
+
+const handlePasswordResetEmailSent = (email: string) => {
+  emailAddress.value = email
+  forgotPasswordOpen.value = false
+  passwordResetEmailSentOpen.value = true
 }
 
 const verifyEmail = async () => {
@@ -80,6 +96,7 @@ verifyEmail()
       v-if="loginOpen"
       @close="loginOpen = false"
       @register-click="switchToRegister"
+      @forgot-password-click="switchToForgotPassword"
       @email-not-verified="handleEmailNotVerified"
     />
     <HomeAuthEmailNotVerified
@@ -98,6 +115,18 @@ verifyEmail()
       v-if="accountActivatedOpen"
       @close="accountActivatedOpen = false"
       @login-click="switchToLogin"
+    />
+    <HomeAuthForgotPassword
+      v-if="forgotPasswordOpen"
+      @close="forgotPasswordOpen = false"
+      @login-click="switchToLogin"
+      @password-reset-email-sent="handlePasswordResetEmailSent"
+    />
+    <HomeAuthPasswordResetEmailSent
+      v-if="passwordResetEmailSentOpen"
+      :email="emailAddress"
+      @close="passwordResetEmailSentOpen = false"
+      @skip="passwordResetEmailSentOpen = false"
     />
   </div>
 </template>
