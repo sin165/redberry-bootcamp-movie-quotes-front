@@ -11,55 +11,33 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useFetch } from '@/composables/useFetch'
 
+type ModalName =
+  | 'login'
+  | 'register'
+  | 'emailNotVerified'
+  | 'verificationEmailSent'
+  | 'accountActivated'
+  | 'forgotPassword'
+  | 'passwordResetEmailSent'
+
+const currentModal = ref<ModalName | null>(null)
 const route = useRoute()
-const registerOpen = ref(false)
-const loginOpen = ref(false)
-const emailNotVerifiedOpen = ref(false)
-const verificationEmailSentOpen = ref(false)
-const accountActivatedOpen = ref(false)
-const forgotPasswordOpen = ref(false)
-const passwordResetEmailSentOpen = ref(false)
 const linkExpired = ref(false)
 const emailAddress = ref('')
 
-const switchToLogin = () => {
-  loginOpen.value = true
-  registerOpen.value = false
-  accountActivatedOpen.value = false
-  forgotPasswordOpen.value = false
-}
-
-const switchToRegister = () => {
-  registerOpen.value = true
-  loginOpen.value = false
-}
-
-const switchToForgotPassword = () => {
-  forgotPasswordOpen.value = true
-  loginOpen.value = false
-}
-
 const handleEmailNotVerified = (email: string) => {
-  loginOpen.value = false
   emailAddress.value = email
-  emailNotVerifiedOpen.value = true
+  currentModal.value = 'emailNotVerified'
 }
 
 const handleRegistered = (email: string) => {
-  registerOpen.value = false
   emailAddress.value = email
-  verificationEmailSentOpen.value = true
-}
-
-const handleSent = () => {
-  verificationEmailSentOpen.value = true
-  emailNotVerifiedOpen.value = false
+  currentModal.value = 'verificationEmailSent'
 }
 
 const handlePasswordResetEmailSent = (email: string) => {
   emailAddress.value = email
-  forgotPasswordOpen.value = false
-  passwordResetEmailSentOpen.value = true
+  currentModal.value = 'passwordResetEmailSent'
 }
 
 const verifyEmail = async () => {
@@ -67,11 +45,11 @@ const verifyEmail = async () => {
     const { status, executeFetch } = useFetch(route.query.verify_url.toString())
     await executeFetch()
     if (status.value === 200) {
-      accountActivatedOpen.value = true
+      currentModal.value = 'accountActivated'
     } else {
       emailAddress.value = route.query.email.toString()
       linkExpired.value = true
-      emailNotVerifiedOpen.value = true
+      currentModal.value = 'emailNotVerified'
     }
   }
 }
@@ -82,51 +60,51 @@ verifyEmail()
 <template>
   <div class="relative bg-black min-h-dvh">
     <HomeContent
-      :class="{ 'hidden lg:block': registerOpen }"
-      @register-click="registerOpen = true"
-      @login-click="loginOpen = true"
+      :class="{ 'hidden lg:block': currentModal !== null }"
+      @register-click="currentModal = 'register'"
+      @login-click="currentModal = 'login'"
     />
     <HomeAuthRegister
-      v-if="registerOpen"
-      @close="registerOpen = false"
-      @login-click="switchToLogin"
+      v-if="currentModal === 'register'"
+      @close="currentModal = null"
+      @login-click="currentModal = 'login'"
       @registered="handleRegistered"
     />
     <HomeAuthLogin
-      v-if="loginOpen"
-      @close="loginOpen = false"
-      @register-click="switchToRegister"
-      @forgot-password-click="switchToForgotPassword"
+      v-if="currentModal === 'login'"
+      @close="currentModal = null"
+      @register-click="currentModal = 'register'"
+      @forgot-password-click="currentModal = 'forgotPassword'"
       @email-not-verified="handleEmailNotVerified"
     />
     <HomeAuthEmailNotVerified
-      v-if="emailNotVerifiedOpen"
+      v-if="currentModal === 'emailNotVerified'"
       :email="emailAddress"
       :expired="linkExpired"
-      @close="emailNotVerifiedOpen = false"
-      @sent="handleSent"
+      @close="currentModal = null"
+      @sent="currentModal = 'verificationEmailSent'"
     />
     <HomeAuthVerificationEmailSent
-      v-if="verificationEmailSentOpen"
+      v-if="currentModal === 'verificationEmailSent'"
       :email="emailAddress"
-      @close="verificationEmailSentOpen = false"
+      @close="currentModal = null"
     />
     <HomeAuthAccountActivated
-      v-if="accountActivatedOpen"
-      @close="accountActivatedOpen = false"
-      @login-click="switchToLogin"
+      v-if="currentModal === 'accountActivated'"
+      @close="currentModal = null"
+      @login-click="currentModal = 'login'"
     />
     <HomeAuthForgotPassword
-      v-if="forgotPasswordOpen"
-      @close="forgotPasswordOpen = false"
-      @login-click="switchToLogin"
+      v-if="currentModal === 'forgotPassword'"
+      @close="currentModal = null"
+      @login-click="currentModal = 'login'"
       @password-reset-email-sent="handlePasswordResetEmailSent"
     />
     <HomeAuthPasswordResetEmailSent
-      v-if="passwordResetEmailSentOpen"
+      v-if="currentModal === 'passwordResetEmailSent'"
       :email="emailAddress"
-      @close="passwordResetEmailSentOpen = false"
-      @skip="passwordResetEmailSentOpen = false"
+      @close="currentModal = null"
+      @skip="currentModal = null"
     />
   </div>
 </template>
