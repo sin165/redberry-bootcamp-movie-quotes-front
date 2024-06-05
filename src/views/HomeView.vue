@@ -7,6 +7,8 @@ import HomeAuthVerificationEmailSent from '@/components/home/HomeAuthVerificatio
 import HomeAuthAccountActivated from '@/components/home/HomeAuthAccountActivated.vue'
 import HomeAuthForgotPassword from '@/components/home/HomeAuthForgotPassword.vue'
 import HomeAuthPasswordResetEmailSent from '@/components/home/HomeAuthPasswordResetEmailSent.vue'
+import HomeAuthCreateNewPassword from '@/components/home/HomeAuthCreateNewPassword.vue'
+import HomeAuthPasswordChanged from '@/components/home/HomeAuthPasswordChanged.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useFetch } from '@/composables/useFetch'
@@ -19,6 +21,8 @@ type ModalName =
   | 'accountActivated'
   | 'forgotPassword'
   | 'passwordResetEmailSent'
+  | 'createNewPassword'
+  | 'passwordChanged'
 
 const currentModal = ref<ModalName | null>(null)
 const route = useRoute()
@@ -55,6 +59,10 @@ const verifyEmail = async () => {
 }
 
 verifyEmail()
+
+if (route.query.password_reset_token) {
+  currentModal.value = 'createNewPassword'
+}
 </script>
 
 <template>
@@ -105,6 +113,17 @@ verifyEmail()
       :email="emailAddress"
       @close="currentModal = null"
       @skip="currentModal = null"
+    />
+    <HomeAuthCreateNewPassword
+      v-if="currentModal === 'createNewPassword'"
+      @close="currentModal = null"
+      @login-click="currentModal = 'login'"
+      @password-updated="currentModal = 'passwordChanged'"
+    />
+    <HomeAuthPasswordChanged
+      v-if="currentModal === 'passwordChanged'"
+      @close="currentModal = null"
+      @login-click="currentModal = 'login'"
     />
   </div>
 </template>
