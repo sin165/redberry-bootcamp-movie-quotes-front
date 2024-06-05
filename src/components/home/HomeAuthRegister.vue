@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LayoutsAuth from '@/layouts/LayoutsAuth.vue'
 import HomeAuthInput from '@/components/home/HomeAuthInput.vue'
-import BaseButton from '../base/BaseButton.vue'
+import BaseButton from '@/components/base/BaseButton.vue'
 import { useForm } from 'vee-validate'
 import { useRegister } from '@/composables/auth/useRegister'
 

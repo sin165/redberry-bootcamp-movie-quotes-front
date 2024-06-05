@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { useFetch } from '../useFetch'
+import { useFetch } from '@/composables/useFetch'
 
 export function useRegister() {
   const { data, status, loading, formValues, executeFetch } = useFetch('/register', 'POST', true)
