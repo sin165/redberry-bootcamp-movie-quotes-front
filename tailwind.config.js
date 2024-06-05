@@ -47,6 +47,7 @@ export default {
         beige: '#DDCCAA',
         crimson: {
           DEFAULT: '#E31221',
+          200: '#F07C84',
           300: '#EC4C57',
           500: '#DC3545',
           700: '#CC0E10',
@@ -64,9 +65,12 @@ export default {
         'almost-white': '#D9D9D9'
       },
       boxShadow: {
+        pink: '0px 0px 0px 4px #F07C8480',
         outline: '0px 0px 0px 4px #0D6EFD40'
       },
       backgroundImage: {
+        'linear-diagonal':
+          'linear-gradient(293deg, rgba(239, 239, 239, 0.09) -1.81%, rgba(239, 239, 239, 0.002) 102.5%)',
         'linear-dark-bottom':
           'linear-gradient(187.16deg, #181623 0.07%, #191725 51.65%, #0D0B14 98.75%)',
         'linear-dark-middle':

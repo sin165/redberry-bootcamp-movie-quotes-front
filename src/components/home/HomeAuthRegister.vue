@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import LayoutsAuth from '@/layouts/LayoutsAuth.vue'
 import HomeAuthInput from '@/components/home/HomeAuthInput.vue'
-import BaseButton from '../base/BaseButton.vue'
+import BaseButton from '@/components/base/BaseButton.vue'
 import { useForm } from 'vee-validate'
+import { useRegister } from '@/composables/auth/useRegister'
 
-const emit = defineEmits(['loginClick'])
+const emit = defineEmits<{
+  loginClick: []
+  registered: [email: string]
+}>()
+
+const { status, loading, backendNameError, backendEmailError, register } = useRegister()
 
 const { handleSubmit } = useForm()
-const onSubmit = handleSubmit((values) => {
-  console.log(values)
+const onSubmit = handleSubmit(async (values) => {
+  if (backendEmailError.value || backendNameError.value) return
+  await register(values)
+  if (status.value === 201) {
+    emit('registered', values.email)
+  }
 })
 </script>
 
@@ -24,6 +34,8 @@ const onSubmit = handleSubmit((values) => {
             label="Name"
             placeholder="Enter your name"
             rules="required|lowercase|min:3|max:15"
+            :backendError="backendNameError"
+            @input="backendNameError = ''"
           />
           <HomeAuthInput
             name="email"
@@ -31,6 +43,8 @@ const onSubmit = handleSubmit((values) => {
             placeholder="Enter your email"
             type="email"
             rules="required|email"
+            :backendError="backendEmailError"
+            @input="backendEmailError = ''"
           />
           <HomeAuthInput
             name="password"
@@ -47,7 +61,7 @@ const onSubmit = handleSubmit((values) => {
             rules="required|confirmed:@password"
           />
         </div>
-        <BaseButton class="w-full">Get started</BaseButton>
+        <BaseButton class="w-full" :loading="loading">Get started</BaseButton>
       </form>
       <p class="text-gray-dark text-center mt-8">
         Already have an account?

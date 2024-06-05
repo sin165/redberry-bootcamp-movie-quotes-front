@@ -7,6 +7,7 @@ type Props = {
   label: string
   placeholder?: string
   rules?: string
+  backendError?: string
 }
 const props = withDefaults(defineProps<Props>(), {
   type: 'text'
@@ -27,6 +28,8 @@ const { value, errorMessage } = useField(props.name, props.rules)
       class="bg-gray-light rounded w-full h-9.5 px-3.25 outline-none focus:shadow-outline mt-2"
       :class="{ 'border border-crimson': errorMessage }"
     />
-    <p v-if="errorMessage" class="text-crimson-500 text-sm mt-1">{{ errorMessage }}</p>
+    <p v-if="errorMessage || backendError" class="text-crimson-500 text-sm mt-1">
+      {{ errorMessage || backendError }}
+    </p>
   </div>
 </template>
