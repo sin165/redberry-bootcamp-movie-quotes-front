@@ -16,8 +16,10 @@ export default {
         8.5: '2.125rem',
         9.5: '2.375rem',
         13: '3.25rem',
+        15: '3.75rem',
         17: '4.25rem',
         17.5: '4.375rem',
+        21.5: '5.375rem',
         30: '7.5rem',
         42.5: '10.625rem',
         52.5: '13.125rem',
@@ -60,8 +62,13 @@ export default {
         blue: {
           link: '#0D6EFD'
         },
-        night: '#222030',
+        night: {
+          DEFAULT: '#222030',
+          deep: '#181624',
+          pale: '#22203033'
+        },
         darkened: '#0000008A',
+        lightened: '#FFFFFF0D',
         'almost-white': '#D9D9D9'
       },
       boxShadow: {

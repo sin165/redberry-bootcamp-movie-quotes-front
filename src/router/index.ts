@@ -13,6 +13,11 @@ const router = createRouter({
       path: '/google/callback',
       name: 'google-callback',
       component: () => import('@/views/AuthGoogleView.vue')
+    },
+    {
+      path: '/feed',
+      name: 'feed',
+      component: () => import('@/views/FeedView.vue')
     }
   ]
 })

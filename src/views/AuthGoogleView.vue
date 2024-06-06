@@ -12,7 +12,7 @@ queryParams.value = route.query as Record<string, string>
 const login = async () => {
   await executeFetch()
   userStore.setUser(data.value.user.name, data.value.user.email)
-  router.push({ name: 'home' })
+  router.push({ name: 'feed' })
 }
 
 login()
