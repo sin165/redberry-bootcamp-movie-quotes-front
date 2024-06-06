@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import LayoutsAuth from '@/layouts/LayoutsAuth.vue'
 import HomeAuthInput from '@/components/home/HomeAuthInput.vue'
+import HomeAuthButtonGoogle from '@/components/home/HomeAuthButtonGoogle.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import { useForm } from 'vee-validate'
 import { useLogin } from '@/composables/auth/useLogin'
@@ -55,6 +56,7 @@ const onSubmit = handleSubmit(async (values) => {
         <p v-if="errorMessage" class="text-crimson-500 text-sm mt-1">{{ errorMessage }}</p>
         <BaseButton class="w-full" :loading="loading">Sign in</BaseButton>
       </form>
+      <HomeAuthButtonGoogle sign="in" />
       <p class="text-gray-dark text-center mt-8">
         Don't have an account
         <button class="text-blue-link underline" @click="emit('registerClick')">Sign up</button>
