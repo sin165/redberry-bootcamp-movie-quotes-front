@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import BaseButton from '@/components/base/BaseButton.vue'
+import IconGandalf from '@/components/icons/IconGandalf.vue'
 import { useLogout } from '@/composables/auth/useLogout'
 import { useUserStore } from '@/store/UserStore'
+import { RouterLink } from 'vue-router'
 
 const userStore = useUserStore()
 const { logout, loading } = useLogout()
@@ -8,7 +11,7 @@ const { logout, loading } = useLogout()
 
 <template>
   <div class="fixed w-dvw h-dvh bg-linear-dark-bottom -z-30"></div>
-  <div class="text-white font-neue">
+  <div v-if="userStore.email" class="text-white font-neue">
     <header class="h-21.5 w-full bg-night-deep">
       <div
         class="bg-lightened border-b border-night-pale h-full px-17.5 flex justify-between items-center"
@@ -39,5 +42,13 @@ const { logout, loading } = useLogout()
     <main>
       <slot></slot>
     </main>
+  </div>
+  <div v-else-if="userStore.loaded" class="pt-20 px-16 text-center text-white font-neue">
+    <IconGandalf class="mx-auto" />
+    <h2 class="text-2xl mb-4">You shall not pass!</h2>
+    <p class="mb-8">Sorry, but you don’t have permission to access this page</p>
+    <RouterLink :to="{ name: 'home' }">
+      <BaseButton>Return home</BaseButton>
+    </RouterLink>
   </div>
 </template>

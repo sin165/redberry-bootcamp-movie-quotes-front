@@ -15,6 +15,8 @@ export function useCheckUser() {
       if (route.name === 'home') {
         router.push({ name: 'feed' })
       }
+    } else {
+      userStore.setLoaded()
     }
   }
 
