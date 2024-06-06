@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useLogout } from '@/composables/auth/useLogout'
 import { useUserStore } from '@/store/UserStore'
+
 const userStore = useUserStore()
+const { logout, loading } = useLogout()
 </script>
 
 <template>
@@ -14,7 +17,13 @@ const userStore = useUserStore()
           <span class="text-beige font-medium">MOVIE QUOTES</span>
         </div>
         <div>
-          <button class="h-8 border border-white rounded px-3.25 py-auto lg:h-9.5">Log out</button>
+          <button
+            :disabled="loading"
+            class="h-8 border border-white rounded px-3.25 py-auto lg:h-9.5"
+            @click="logout"
+          >
+            Log out
+          </button>
         </div>
       </div>
     </header>
