@@ -49,12 +49,16 @@ const onSubmit = handleSubmit(async (values) => {
             <input v-model="remember" v-bind="rememberAttrs" type="checkbox" class="size-4 mb-1" />
             <span class="text-white">Remember me</span>
           </label>
-          <button @click.prevent="emit('forgotPasswordClick')" class="text-blue-link underline">
+          <button
+            type="button"
+            class="text-blue-link underline"
+            @click="emit('forgotPasswordClick')"
+          >
             Forgot password
           </button>
         </div>
         <p v-if="errorMessage" class="text-crimson-500 text-sm mt-1">{{ errorMessage }}</p>
-        <BaseButton class="w-full" :loading="loading">Sign in</BaseButton>
+        <BaseButton type="submit" class="w-full" :loading="loading">Sign in</BaseButton>
       </form>
       <HomeAuthButtonGoogle sign="in" />
       <p class="text-gray-dark text-center mt-8">
