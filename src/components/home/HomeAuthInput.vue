@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import IconEyeSlash from '@/components/icons/IconEyeSlash.vue'
+import IconInvalid from '@/components/icons/IconInvalid.vue'
 import { useField } from 'vee-validate'
 import { ref } from 'vue'
 
@@ -38,6 +39,11 @@ const { value, errorMessage } = useField(props.name, props.rules)
         :slash="!showPassword"
         class="absolute top-5 right-3 size-4 cursor-pointer"
         @click="showPassword = !showPassword"
+      />
+      <IconInvalid
+        v-if="errorMessage"
+        class="absolute top-5 size-4"
+        :class="{ 'right-8': props.type === 'password', 'right-3': props.type !== 'password' }"
       />
     </div>
     <p v-if="errorMessage || backendError" class="text-crimson-500 text-sm mt-1">
