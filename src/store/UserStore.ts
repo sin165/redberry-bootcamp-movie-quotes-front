@@ -6,10 +6,7 @@ export const useUserStore = defineStore('userStore', {
     name: '',
     email: ''
   }),
-  getters: {
-    getName: (state) => state.name,
-    getEmail: (state) => state.email
-  },
+  getters: {},
   actions: {
     setLoaded() {
       this.loaded = true

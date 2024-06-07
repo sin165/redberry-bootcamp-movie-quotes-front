@@ -34,7 +34,7 @@ const { logout, loading } = useLogout()
       <a class="flex gap-6">
         <div class="size-15"></div>
         <div>
-          <h2 class="text-2xl">{{ userStore.getName }}</h2>
+          <h2 class="text-2xl">{{ userStore.name }}</h2>
           <p>Edit your profile</p>
         </div>
       </a>
