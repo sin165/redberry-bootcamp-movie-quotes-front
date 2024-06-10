@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import LayoutsAuth from '@/layouts/LayoutsAuth.vue'
 import HomeAuthInput from '@/components/home/HomeAuthInput.vue'
+import HomeAuthButtonGoogle from '@/components/home/HomeAuthButtonGoogle.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import { useForm } from 'vee-validate'
 import { useRegister } from '@/composables/auth/useRegister'
@@ -63,6 +64,7 @@ const onSubmit = handleSubmit(async (values) => {
         </div>
         <BaseButton class="w-full" :loading="loading">Get started</BaseButton>
       </form>
+      <HomeAuthButtonGoogle sign="up" />
       <p class="text-gray-dark text-center mt-8">
         Already have an account?
         <button class="text-blue-link underline" @click="emit('loginClick')">Log in</button>
