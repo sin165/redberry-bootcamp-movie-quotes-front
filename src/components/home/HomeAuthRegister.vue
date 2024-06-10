@@ -26,22 +26,24 @@ const onSubmit = handleSubmit(async (values) => {
 <template>
   <LayoutsAuth>
     <div class="mt-17.5">
-      <h2 class="text-white text-center font-medium text-2xl leading-7">Create an account</h2>
-      <p class="text-gray-dark text-center mt-3">Start your journey!</p>
+      <h2 class="text-white text-center font-medium text-2xl leading-7">
+        {{ $t('register.heading') }}
+      </h2>
+      <p class="text-gray-dark text-center mt-3">{{ $t('register.subheading') }}</p>
       <form class="mt-8" @submit="onSubmit">
         <div class="space-y-4 mb-6">
           <HomeAuthInput
             name="name"
-            label="Name"
-            placeholder="Enter your name"
+            :label="$t('name')"
+            :placeholder="$t('enter_your_name')"
             rules="required|lowercase|min:3|max:15"
             :backendError="backendNameError"
             @input="backendNameError = ''"
           />
           <HomeAuthInput
             name="email"
-            label="Email"
-            placeholder="Enter your email"
+            :label="$t('email')"
+            :placeholder="$t('enter_your_email')"
             type="email"
             rules="required|email"
             :backendError="backendEmailError"
@@ -49,15 +51,15 @@ const onSubmit = handleSubmit(async (values) => {
           />
           <HomeAuthInput
             name="password"
-            label="Password"
-            placeholder="Password"
+            :label="$t('password')"
+            :placeholder="$t('password')"
             type="password"
             rules="required|lowercase|min:8|max:15"
           />
           <HomeAuthInput
             name="password_confirmation"
-            label="Confirm password"
-            placeholder="Password"
+            :label="$t('confirm_password')"
+            :placeholder="$t('confirm_password')"
             type="password"
             rules="required|confirmed:@password"
           />
