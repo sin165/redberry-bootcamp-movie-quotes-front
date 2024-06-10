@@ -10,6 +10,7 @@ import App from './App.vue'
 import router from './router'
 
 import '@/plugins/vee-validate/rules'
+import '@/plugins/vee-validate/messages'
 
 const i18n = createI18n({
   legacy: false,
