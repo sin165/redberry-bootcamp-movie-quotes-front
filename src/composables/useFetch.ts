@@ -1,9 +1,11 @@
 import { getCookie } from '@/utils/getCookie'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 export function useFetch(path: string, method = 'GET', withXSRF = false) {
+  const { locale } = useI18n()
   const data = ref<any>(null)
   const status = ref<number | null>(null)
   const error = ref<string | null>(null)
@@ -20,6 +22,7 @@ export function useFetch(path: string, method = 'GET', withXSRF = false) {
       credentials: 'include',
       headers: {
         'Content-type': 'application/json',
+        'Accept-Language': locale.value,
         Accept: 'application/json'
       }
     }

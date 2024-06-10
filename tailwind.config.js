@@ -64,6 +64,7 @@ export default {
         },
         night: {
           DEFAULT: '#222030',
+          faded: '#24222F',
           deep: '#181624',
           pale: '#22203033'
         },

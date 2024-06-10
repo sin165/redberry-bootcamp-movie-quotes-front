@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import LanguageSwitcher from '@/components/shared/LanguageSwitcher.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import IconGandalf from '@/components/icons/IconGandalf.vue'
 import { useFetch } from '@/composables/useFetch'
@@ -27,13 +28,14 @@ const logout = async () => {
         <div>
           <span class="text-beige font-medium">MOVIE QUOTES</span>
         </div>
-        <div>
+        <div class="flex items-center gap-2 lg:gap-4">
+          <LanguageSwitcher />
           <button
             :disabled="loading"
             class="h-8 border border-white rounded px-3.25 py-auto lg:h-9.5"
             @click="logout"
           >
-            Log out
+            {{ $t('button.logout') }}
           </button>
         </div>
       </div>

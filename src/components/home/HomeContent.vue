@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconDropdown from '@/components/icons/IconDropdown.vue'
+import LanguageSwitcher from '@/components/shared/LanguageSwitcher.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import HomeContentQuote from '@/components/home/HomeContentQuote.vue'
 const emit = defineEmits(['loginClick', 'registerClick'])
@@ -14,8 +14,8 @@ const emit = defineEmits(['loginClick', 'registerClick'])
         <div class="">
           <span class="text-beige font-medium font-neue">MOVIE QUOTES</span>
         </div>
-        <div class="flex gap-2 lg:gap-4 text-sm lg:text-base">
-          <button class="flex gap-2 items-center px-3.25">Eng <IconDropdown /></button>
+        <div class="flex items-center gap-2 lg:gap-4 text-sm lg:text-base">
+          <LanguageSwitcher />
           <div class="flex lg:flex-row-reverse gap-2 lg:gap-4">
             <button
               class="h-8 border border-white rounded px-3.25 py-auto lg:h-9.5"
