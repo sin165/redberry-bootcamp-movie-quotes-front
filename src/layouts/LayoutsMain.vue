@@ -1,12 +1,20 @@
 <script setup lang="ts">
 import BaseButton from '@/components/base/BaseButton.vue'
 import IconGandalf from '@/components/icons/IconGandalf.vue'
-import { useLogout } from '@/composables/auth/useLogout'
+import { useFetch } from '@/composables/useFetch'
 import { useUserStore } from '@/store/UserStore'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 
+const router = useRouter()
 const userStore = useUserStore()
-const { logout, loading } = useLogout()
+const { status, loading, executeFetch } = useFetch('/logout', 'POST', true)
+const logout = async () => {
+  await executeFetch()
+  if (status.value === 200) {
+    userStore.clearUser()
+    router.push({ name: 'home' })
+  }
+}
 </script>
 
 <template>
