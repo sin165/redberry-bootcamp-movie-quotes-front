@@ -27,8 +27,10 @@ const onSubmit = handleSubmit(async (values) => {
 <template>
   <LayoutsAuth>
     <div class="mt-17.5">
-      <h2 class="text-white text-center font-medium text-2xl leading-7">Log in to your account</h2>
-      <p class="text-gray-dark text-center mt-3">Welcome back! Please enter your details.</p>
+      <h2 class="text-white text-center font-medium text-2xl leading-7">
+        {{ $t('login.heading') }}
+      </h2>
+      <p class="text-gray-dark text-center mt-3">{{ $t('login.subheading') }}</p>
       <form class="mt-8 space-y-4" @submit="onSubmit">
         <HomeAuthInput
           name="email"

@@ -1,0 +1,21 @@
+{
+  "name": "Name",
+  "enter_your_name": "Enter your name",
+  "email": "Email",
+  "enter_your_email": "Enter your email",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "thank_you": "Thank you!",
+  "check_your_email": "Please check your email and follow the instructions to activate your account.",
+  "account_activated": "Your account has been activated.",
+  "go_to_my_email": "Go to my email",
+  "button.logout": "Log out",
+  "register": {
+    "heading": "Create an account",
+    "subheading": "Start your journey!"
+  },
+  "login": {
+    "heading": "Log in to your account",
+    "subheading": "Welcome back! Please enter your details."
+  }
+}
