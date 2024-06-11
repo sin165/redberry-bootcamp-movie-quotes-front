@@ -2,6 +2,7 @@
 import LanguageSwitcher from '@/components/shared/LanguageSwitcher.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import IconGandalf from '@/components/icons/IconGandalf.vue'
+import IconAvatarDefault from '@/components/icons/IconAvatarDefault.vue'
 import { useFetch } from '@/composables/useFetch'
 import { useUserStore } from '@/store/UserStore'
 import { RouterLink, useRouter } from 'vue-router'
@@ -42,7 +43,15 @@ const logout = async () => {
     </header>
     <nav class="fixed top-30 left-17.5">
       <a class="flex gap-6">
-        <div class="size-15"></div>
+        <div class="size-15">
+          <img v-if="userStore.avatar" :src="userStore.avatar" alt="avatar" class="rounded-full" />
+          <div
+            v-else
+            class="bg-linear-diagonal border border-lightened size-full rounded-full flex justify-center items-center"
+          >
+            <IconAvatarDefault class="size-3/4" />
+          </div>
+        </div>
         <div>
           <h2 class="text-2xl">{{ userStore.name }}</h2>
           <p>{{ $t('button.edit_profile') }}</p>
