@@ -26,28 +26,32 @@ const onSubmit = handleSubmit(async (values) => {
 <template>
   <LayoutsAuth>
     <div class="mt-17.5">
-      <h2 class="text-white text-center font-medium text-2xl leading-7">Forgot password?</h2>
+      <h2 class="text-white text-center font-medium text-2xl leading-7">
+        {{ $t('forgot_password.heading') }}
+      </h2>
       <p class="text-gray-dark text-center mt-3">
-        Enter the email and we’ll send an email with instructions to reset your password
+        {{ $t('forgot_password.subheading') }}
       </p>
       <form class="mt-8 space-y-4" @submit="onSubmit">
         <HomeAuthInput
           name="email"
-          label="Email"
-          placeholder="Enter your email"
+          :label="$t('email')"
+          :placeholder="$t('enter_your_email')"
           type="email"
           rules="required|email"
           :backendError="backendError"
           @input="backendError = ''"
         />
-        <BaseButton class="w-full" :loading="loading">Send instructions</BaseButton>
+        <BaseButton class="w-full" :loading="loading">
+          {{ $t('button.send_instructions') }}
+        </BaseButton>
       </form>
       <button
         class="text-gray-dark text-center mt-8 flex justify-center gap-2 mx-auto pr-3"
         @click="emit('loginClick')"
       >
         <IconBack class="translate-y-1" />
-        Back to login
+        {{ $t('button.back_to_login') }}
       </button>
     </div>
   </LayoutsAuth>

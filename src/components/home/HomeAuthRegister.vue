@@ -64,12 +64,14 @@ const onSubmit = handleSubmit(async (values) => {
             rules="required|confirmed:@password"
           />
         </div>
-        <BaseButton class="w-full" :loading="loading">Get started</BaseButton>
+        <BaseButton class="w-full" :loading="loading">{{ $t('button.get_started') }}</BaseButton>
       </form>
       <HomeAuthButtonGoogle sign="up" />
       <p class="text-gray-dark text-center mt-8">
-        Already have an account?
-        <button class="text-blue-link underline" @click="emit('loginClick')">Log in</button>
+        {{ $t('register.already_have_an_account') }}
+        <button class="text-blue-link underline" @click="emit('loginClick')">
+          {{ $t('button.log_in') }}
+        </button>
       </p>
     </div>
   </LayoutsAuth>

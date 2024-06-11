@@ -21,62 +21,64 @@ const emit = defineEmits(['loginClick', 'registerClick'])
               class="h-8 border border-white rounded px-3.25 py-auto lg:h-9.5"
               @click="emit('loginClick')"
             >
-              Log in
+              {{ $t('button.log_in') }}
             </button>
-            <BaseButton :small="true" @click="emit('registerClick')">Sign up</BaseButton>
+            <BaseButton :small="true" @click="emit('registerClick')">
+              {{ $t('button.sign_up') }}
+            </BaseButton>
           </div>
         </div>
       </div>
     </header>
-    <main class="">
-      <div class="">
+    <main>
+      <div>
         <div class="h-121.25 lg:h-202"></div>
         <div class="relative">
-          <img src="@/assets/images/image1sm.png" alt="scene from Interstellar" class="lg:hidden" />
+          <img
+            src="@/assets/images/image1sm.png"
+            :alt="$t('home.interstellar.alt')"
+            class="lg:hidden"
+          />
           <img
             src="@/assets/images/image1lg.png"
-            alt="scene from Interstellar"
+            :alt="$t('home.interstellar.alt')"
             class="hidden lg:block"
           />
           <HomeContentQuote
             class="absolute top-37% lg:top-34.33% max-w-82 lg:max-w-208"
-            quote="You have to leave somethig behind to go forward"
-            movie="Interstellar, 2014"
+            :quote="$t('home.interstellar.quote')"
+            :movie="$t('home.interstellar.title')"
           />
         </div>
         <div class="relative h-fit">
           <img
             src="@/assets/images/image3sm.png"
-            alt="scene from The Royal Tenenbaums"
+            :alt="$t('home.royal_tenenbaums.alt')"
             class="lg:hidden"
           />
           <img
             src="@/assets/images/image3lg.png"
-            alt="scene from The Royal Tenenbaums"
+            :alt="$t('home.royal_tenenbaums.alt')"
             class="hidden lg:block"
           />
           <div class="bg-linear-dark-top hidden lg:block size-full absolute top-0"></div>
           <HomeContentQuote
             class="absolute top-32% lg:top-41% max-w-78 lg:max-w-265"
-            quote="I think we’re just gonna have to be secretly in love with each other and leave it at that"
-            movie="The Royal Tenenbaums, 2001"
+            :quote="$t('home.royal_tenenbaums.quote')"
+            :movie="$t('home.royal_tenenbaums.title')"
           />
         </div>
         <div class="relative">
-          <img
-            src="@/assets/images/image2sm.png"
-            alt="scene from The Lord of the Rings"
-            class="lg:hidden"
-          />
+          <img src="@/assets/images/image2sm.png" :alt="$t('home.lotr.alt')" class="lg:hidden" />
           <img
             src="@/assets/images/image2lg.png"
-            alt="scene from The Lord of the Rings"
+            :alt="$t('home.lotr.alt')"
             class="hidden lg:block"
           />
           <HomeContentQuote
             class="absolute top-35% lg:top-54% max-w-82 lg:max-w-265"
-            quote="I see in your eyes the same fear that would take the heart of me...."
-            movie="The Lord of the Rings, 2003"
+            :quote="$t('home.lotr.quote')"
+            :movie="$t('home.lotr.title')"
           />
         </div>
       </div>
@@ -92,9 +94,11 @@ const emit = defineEmits(['loginClick', 'registerClick'])
           <h1
             class="text-2xl leading-9 font-bold text-center max-w-75 mx-auto font-montserrat text-beige lg:text-6xl lg:max-w-177.5 lg:leading-normal"
           >
-            Find any quote in millions of movie lines
+            {{ $t('home.find_any_quote') }}
           </h1>
-          <BaseButton class="mt-8" @click="emit('registerClick')"> Get started </BaseButton>
+          <BaseButton class="mt-8" @click="emit('registerClick')">
+            {{ $t('button.get_started') }}
+          </BaseButton>
         </div>
       </div>
     </main>

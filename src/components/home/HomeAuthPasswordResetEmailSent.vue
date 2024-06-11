@@ -14,17 +14,19 @@ const emailUrl = 'https://' + props.email.split('@')[1]
 <template>
   <LayoutsAuthNotice>
     <template v-slot:icon><IconSent /></template>
-    <template v-slot:title>Check your email!</template>
-    <template v-slot:text> We have sent a password recover instructions to your email. </template>
+    <template v-slot:title>{{ $t('message.check_your_email') }}</template>
+    <template v-slot:text>{{ $t('message.password_reset_instructions_sent') }}</template>
     <template v-slot:button>
-      <a :href="emailUrl"><BaseButton>Go to my email</BaseButton></a>
+      <a :href="emailUrl">
+        <BaseButton>{{ $t('button.go_to_my_email') }}</BaseButton>
+      </a>
     </template>
     <template v-slot:extra>
       <button
         class="text-gray-dark text-center mt-8 flex justify-center gap-2 mx-auto pr-3"
         @click="emit('skip')"
       >
-        Skip, I'll confirm later
+        {{ $t('button.confirm_later') }}
       </button>
     </template>
   </LayoutsAuthNotice>
