@@ -45,7 +45,7 @@ const logout = async () => {
         <div class="size-15"></div>
         <div>
           <h2 class="text-2xl">{{ userStore.name }}</h2>
-          <p>Edit your profile</p>
+          <p>{{ $t('button.edit_profile') }}</p>
         </div>
       </a>
     </nav>
@@ -56,9 +56,9 @@ const logout = async () => {
   <div v-else-if="userStore.loaded" class="pt-20 px-16 text-center text-white font-neue">
     <IconGandalf class="mx-auto" />
     <h2 class="text-2xl mb-4">You shall not pass!</h2>
-    <p class="mb-8">Sorry, but you don’t have permission to access this page</p>
+    <p class="mb-8">{{ $t('message.you_dont_have_permission') }}</p>
     <RouterLink :to="{ name: 'home' }">
-      <BaseButton>Return home</BaseButton>
+      <BaseButton>{{ $t('button.return_home') }}</BaseButton>
     </RouterLink>
   </div>
 </template>

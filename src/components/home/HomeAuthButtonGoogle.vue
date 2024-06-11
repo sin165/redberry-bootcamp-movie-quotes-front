@@ -20,6 +20,6 @@ const handleClick = async () => {
     @click="handleClick"
   >
     <IconGoogle class="mb-1" />
-    Sign {{ props.sign }} with Google
+    {{ $t(`button.google_sign_${props.sign}`) }}
   </button>
 </template>

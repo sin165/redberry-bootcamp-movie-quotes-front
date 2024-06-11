@@ -27,14 +27,16 @@ const resendEmail = async () => {
 <template>
   <LayoutsAuthNotice>
     <template v-slot:icon><IconWarning /></template>
-    <template v-slot:title>{{ expired ? 'Link expired!' : 'Account not active!' }}</template>
-    <template v-slot:text>{{
-      expired
-        ? 'Login link has expired, because you haven’t used it'
-        : 'You need to verify your email before you can log in.'
-    }}</template>
+    <template v-slot:title>
+      {{ expired ? $t('message.link_expired') : $t('message.account_not_active') }}
+    </template>
+    <template v-slot:text>
+      {{ expired ? $t('message.link_expired_full') : $t('message.account_not_active_full') }}
+    </template>
     <template v-slot:button>
-      <BaseButton :loading="loading" @click="resendEmail">Request another link</BaseButton>
+      <BaseButton :loading="loading" @click="resendEmail">
+        {{ $t('button.request_another_link') }}
+      </BaseButton>
     </template>
   </LayoutsAuthNotice>
 </template>

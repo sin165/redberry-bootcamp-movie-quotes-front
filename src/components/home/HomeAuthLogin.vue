@@ -34,38 +34,42 @@ const onSubmit = handleSubmit(async (values) => {
       <form class="mt-8 space-y-4" @submit="onSubmit">
         <HomeAuthInput
           name="email"
-          label="Email"
-          placeholder="Enter your email"
+          :label="$t('email')"
+          :placeholder="$t('enter_your_email')"
           type="email"
           rules="required|email"
         />
         <HomeAuthInput
           name="password"
-          label="Password"
-          placeholder="Password"
+          :label="$t('password')"
+          :placeholder="$t('password')"
           type="password"
           rules="required|lowercase|min:8|max:15"
         />
         <div class="flex justify-between">
           <label class="flex gap-2 items-center">
             <input v-model="remember" v-bind="rememberAttrs" type="checkbox" class="size-4 mb-1" />
-            <span class="text-white">Remember me</span>
+            <span class="text-white">{{ $t('remember_me') }}</span>
           </label>
           <button
             type="button"
             class="text-blue-link underline"
             @click="emit('forgotPasswordClick')"
           >
-            Forgot password
+            {{ $t('button.forgot_password') }}
           </button>
         </div>
         <p v-if="errorMessage" class="text-crimson-500 text-sm mt-1">{{ errorMessage }}</p>
-        <BaseButton type="submit" class="w-full" :loading="loading">Sign in</BaseButton>
+        <BaseButton type="submit" class="w-full" :loading="loading">
+          {{ $t('button.sign_in') }}
+        </BaseButton>
       </form>
       <HomeAuthButtonGoogle sign="in" />
       <p class="text-gray-dark text-center mt-8">
-        Don't have an account
-        <button class="text-blue-link underline" @click="emit('registerClick')">Sign up</button>
+        {{ $t('login.dont_have_an_account') }}
+        <button class="text-blue-link underline" @click="emit('registerClick')">
+          {{ $t('button.sign_up') }}
+        </button>
       </p>
     </div>
   </LayoutsAuth>

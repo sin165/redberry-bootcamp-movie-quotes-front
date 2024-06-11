@@ -18,7 +18,7 @@ const emailUrl = 'https://' + props.email.split('@')[1]
     </template>
     <template v-slot:button>
       <a :href="emailUrl">
-        <BaseButton>{{ $t('go_to_my_email') }}</BaseButton>
+        <BaseButton>{{ $t('button.go_to_my_email') }}</BaseButton>
       </a>
     </template>
   </LayoutsAuthNotice>

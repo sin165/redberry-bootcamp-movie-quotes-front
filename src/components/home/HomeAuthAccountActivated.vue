@@ -12,7 +12,7 @@ const emit = defineEmits(['loginClick'])
     <template v-slot:title>{{ $t('thank_you') }}</template>
     <template v-slot:text>{{ $t('account_activated') }}</template>
     <template v-slot:button>
-      <BaseButton @click="emit('loginClick')">Log in</BaseButton>
+      <BaseButton @click="emit('loginClick')">{{ $t('button.log_in') }}</BaseButton>
     </template>
   </LayoutsAuthNotice>
 </template>
