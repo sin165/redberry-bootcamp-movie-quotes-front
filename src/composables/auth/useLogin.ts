@@ -15,7 +15,7 @@ export function useLogin() {
     if (status.value === 401) {
       errorMessage.value = data.value.message
     } else if (status.value === 200) {
-      userStore.setUser(data.value.user.name, data.value.user.email)
+      userStore.setUser(data.value.user.name, data.value.user.email, data.value.user.avatar)
       router.push({ name: 'feed' })
     }
   }

@@ -11,7 +11,7 @@ export function useCheckUser() {
   const fetchUser = async () => {
     await executeFetch()
     if (status.value === 200) {
-      userStore.setUser(data.value.name, data.value.email)
+      userStore.setUser(data.value.name, data.value.email, data.value.avatar)
       if (route.name === 'home') {
         router.push({ name: 'feed' })
       }
