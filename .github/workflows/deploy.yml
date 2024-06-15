@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - 'fix-ci-cd'
 jobs:
   deploy:
     runs-on: ubuntu-latest
