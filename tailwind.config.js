@@ -20,8 +20,10 @@ export default {
         17: '4.25rem',
         17.5: '4.375rem',
         21.5: '5.375rem',
+        29: '7.25rem',
         30: '7.5rem',
         42.5: '10.625rem',
+        47: '11.75rem',
         52.5: '13.125rem',
         75: '18.75rem',
         78: '19.5rem',
@@ -29,9 +31,12 @@ export default {
         107: '26.75rem',
         121.25: '30.3125rem',
         150: '37.5rem',
+        132: '33rem',
+        164.5: '41.125rem',
         177.5: '44.375rem',
         202: '50.5rem',
         208: '52rem',
+        250: '62.5rem',
         265: '66.25rem',
         271: '67.75rem',
         480: '120rem',
@@ -57,6 +62,7 @@ export default {
         },
         gray: {
           light: '#CED4DA',
+          pale: '#CED4DA33',
           dark: '#6C757D'
         },
         blue: {
@@ -65,6 +71,7 @@ export default {
         night: {
           DEFAULT: '#222030',
           faded: '#24222F',
+          dark: '#11101A',
           deep: '#181624',
           pale: '#22203033'
         },

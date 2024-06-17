@@ -25,7 +25,12 @@
     "confirm_later": "Skip, I'll confirm later",
     "get_started": "Get started",
     "edit_profile": "Edit your profile",
-    "return_home": "Return home"
+    "return_home": "Return home",
+    "news_feed": "News feed",
+    "list_of_movies": "List of movies",
+    "edit": "Edit",
+    "save_changes": "Save changes",
+    "cancel": "Cancel"
   },
   "register": {
     "heading": "Create an account",
@@ -73,5 +78,12 @@
       "quote": "I see in your eyes the same fear that would take the heart of me....",
       "alt": "scene from The Lord of the Rings"
     }
-  }
+  },
+  "my_profile": "My profile",
+  "upload_new_photo": "Upload new photo",
+  "new_name": "New name",
+  "enter_new_name": "Enter new name",
+  "new_pass": "New password",
+  "enter_new_pass": "Enter new password",
+  "confirm_new_pass": "Confirm new password"
 }

@@ -1,66 +1,59 @@
 <script setup lang="ts">
 import LanguageSwitcher from '@/components/shared/LanguageSwitcher.vue'
+import ButtonLogout from '@/components/shared/ButtonLogout.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
+import IconMenu from '@/components/icons/IconMenu.vue'
 import IconGandalf from '@/components/icons/IconGandalf.vue'
-import IconAvatarDefault from '@/components/icons/IconAvatarDefault.vue'
-import { useFetch } from '@/composables/useFetch'
+import NavigationPanel from '@/components/shared/NavigationPanel.vue'
 import { useUserStore } from '@/store/UserStore'
-import { RouterLink, useRouter } from 'vue-router'
+import { RouterLink } from 'vue-router'
+import { ref } from 'vue'
 
-const router = useRouter()
 const userStore = useUserStore()
-const { status, loading, executeFetch } = useFetch('/logout', 'POST', true)
-const logout = async () => {
-  await executeFetch()
-  if (status.value === 200) {
-    userStore.clearUser()
-    router.push({ name: 'home' })
-  }
-}
+const menuOpen = ref(false)
 </script>
 
 <template>
   <div class="fixed w-dvw h-dvh bg-linear-dark-bottom -z-30"></div>
   <div v-if="userStore.email" class="text-white font-neue">
-    <header class="h-21.5 w-full bg-night-deep">
+    <header class="fixed h-21.5 w-full bg-night-deep z-40">
       <div
-        class="bg-lightened border-b border-night-pale h-full px-17.5 flex justify-between items-center"
+        class="bg-lightened border-b border-night-pale h-full px-9 lg:px-17.5 flex justify-between items-center"
       >
         <div>
-          <span class="text-beige font-medium">MOVIE QUOTES</span>
+          <span class="text-beige font-medium hidden lg:block">MOVIE QUOTES</span>
+          <IconMenu class="lg:hidden cursor-pointer" @click="menuOpen = !menuOpen" />
         </div>
         <div class="flex items-center gap-2 lg:gap-4">
-          <LanguageSwitcher />
-          <button
-            :disabled="loading"
-            class="h-8 border border-white rounded px-3.25 py-auto lg:h-9.5"
-            @click="logout"
-          >
-            {{ $t('button.logout') }}
-          </button>
+          <LanguageSwitcher class="hidden lg:block" />
+          <ButtonLogout class="hidden lg:block" />
         </div>
       </div>
     </header>
-    <nav class="fixed top-30 left-17.5">
-      <a class="flex gap-6">
-        <div class="size-15">
-          <img v-if="userStore.avatar" :src="userStore.avatar" alt="avatar" class="rounded-full" />
-          <div
-            v-else
-            class="bg-linear-diagonal border border-lightened size-full rounded-full flex justify-center items-center"
-          >
-            <IconAvatarDefault class="size-3/4" />
-          </div>
+    <div class="flex">
+      <div class="mt-30 ml-17.5 hidden lg:block">
+        <div class="sticky top-30 left-0 max-w-72">
+          <NavigationPanel />
         </div>
-        <div>
-          <h2 class="text-2xl">{{ userStore.name }}</h2>
-          <p>{{ $t('button.edit_profile') }}</p>
+      </div>
+      <div class="mt-21.5 lg:mx-17 w-full">
+        <main>
+          <slot></slot>
+        </main>
+      </div>
+    </div>
+    <div v-if="menuOpen" class="lg:hidden">
+      <div class="fixed top-0 left-0 z-40 w-dvw h-dvh" @click="menuOpen = false"></div>
+      <div
+        class="fixed top-0 left-0 z-50 w-96 h-164.5 max-h-dvh bg-night-dark rounded-r-xl py-10 px-11 flex flex-col justify-between"
+      >
+        <NavigationPanel />
+        <div class="flex items-center justify-between">
+          <ButtonLogout />
+          <LanguageSwitcher />
         </div>
-      </a>
-    </nav>
-    <main>
-      <slot></slot>
-    </main>
+      </div>
+    </div>
   </div>
   <div v-else-if="userStore.loaded" class="pt-20 px-16 text-center text-white font-neue">
     <IconGandalf class="mx-auto" />
