@@ -62,7 +62,10 @@ export default {
         },
         gray: {
           light: '#CED4DA',
-          pale: '#CED4DA33',
+          pale: {
+            DEFAULT: '#CED4DA33',
+            50: '#CED4DA80'
+          },
           dark: '#6C757D'
         },
         blue: {

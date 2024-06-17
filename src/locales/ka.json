@@ -30,7 +30,8 @@
     "list_of_movies": "ჩემი ფილმები",
     "edit": "შეცვლა",
     "save_changes": "შენახვა",
-    "cancel": "გაუქმება"
+    "cancel": "გაუქმება",
+    "confirm": "დადასტურება"
   },
   "register": {
     "heading": "პროფილის შექმნა",
@@ -85,5 +86,7 @@
   "enter_new_name": "შეიყვანე ახალი სახელი",
   "new_pass": "ახალი პაროლი",
   "enter_new_pass": "შეიყვანე ახალი პაროლი",
-  "confirm_new_pass": "გაიმეორე ახალი პაროლი"
+  "confirm_new_pass": "გაიმეორე ახალი პაროლი",
+  "are_you_sure_to_make_changes": "დარწმუნებული ხართ?",
+  "changes_updated": "ცვლილებები წარმატებით შეინახა"
 }

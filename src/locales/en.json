@@ -30,7 +30,8 @@
     "list_of_movies": "List of movies",
     "edit": "Edit",
     "save_changes": "Save changes",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   },
   "register": {
     "heading": "Create an account",
@@ -85,5 +86,7 @@
   "enter_new_name": "Enter new name",
   "new_pass": "New password",
   "enter_new_pass": "Enter new password",
-  "confirm_new_pass": "Confirm new password"
+  "confirm_new_pass": "Confirm new password",
+  "are_you_sure_to_make_changes": "Are you sure to make changes ?",
+  "changes_updated": "Changes updated successfully"
 }
