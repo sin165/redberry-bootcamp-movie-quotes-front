@@ -21,15 +21,18 @@ export function useFetch(path: string, method = 'GET', withXSRF = false) {
       method,
       credentials: 'include',
       headers: {
-        'Content-type': 'application/json',
         'Accept-Language': locale.value,
         Accept: 'application/json'
       }
     }
 
-    const body = JSON.stringify(formValues.value)
-    if (body !== '{}') {
-      options.body = body
+    if (JSON.stringify(formValues.value) !== '{}') {
+      const formData = new FormData()
+      for (const key in formValues.value) {
+        if (!formValues.value[key]) continue
+        formData.append(key, formValues.value[key] as Blob | string)
+      }
+      options.body = formData
     }
 
     if (!path.startsWith('http')) {
