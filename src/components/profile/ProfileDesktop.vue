@@ -50,7 +50,7 @@ const onSubmit = handleSubmit(async (values) => {
             <UserAvatar :newAvatar="newAvatar" />
           </div>
         </div>
-        <label class="mx-auto block mt-2 mb-10 text-xl w-max cursor-pointer">
+        <label class="mx-auto block mt-2 mb-10 text-xl w-max cursor-pointer text-center">
           {{ $t('upload_new_photo') }}
           <ProfileInputAvatar ref="avatarInput" @avatarSelect="selectAvatar" />
         </label>

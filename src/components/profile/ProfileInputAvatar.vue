@@ -8,7 +8,12 @@ const emit = defineEmits<{
 
 const inputElement = ref<HTMLInputElement>()
 
-const { value: avatar, errorMessage, handleChange, handleBlur } = useField<File | null>('avatar')
+const {
+  value: avatar,
+  errorMessage,
+  handleChange,
+  handleBlur
+} = useField<File | null>('avatar', 'image')
 
 watch(avatar, (newAvatar) => {
   if (newAvatar) {
@@ -33,5 +38,5 @@ defineExpose({ clearFileInput })
     @change="handleChange"
     @blur="handleBlur"
   />
-  <p v-if="errorMessage">{{ errorMessage }}</p>
+  <p v-if="errorMessage" class="text-sm mt-1">{{ errorMessage }}</p>
 </template>

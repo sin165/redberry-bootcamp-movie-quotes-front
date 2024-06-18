@@ -7,7 +7,7 @@ const { handleSubmit } = useForm()
 
 const inputElement = ref<HTMLInputElement>()
 const { update } = useUpdateProfile()
-const { value: avatar, errorMessage, handleChange } = useField('avatar')
+const { value: avatar, errorMessage, handleChange } = useField('avatar', 'image')
 
 watch(avatar, (newAvatar) => {
   if (newAvatar) {
@@ -22,10 +22,10 @@ const submit = handleSubmit((values) => {
 
 <template>
   <form>
-    <label class="mx-auto block mt-2 mb-10 text-xl w-max cursor-pointer">
+    <label class="mx-auto block mt-2 mb-10 text-xl w-max cursor-pointer text-center">
       {{ $t('upload_new_photo') }}
       <input ref="inputElement" type="file" name="avatar" class="hidden" @change="handleChange" />
+      <p v-if="errorMessage" class="text-sm mt-1">{{ errorMessage }}</p>
     </label>
-    <p v-if="errorMessage">{{ errorMessage }}</p>
   </form>
 </template>
