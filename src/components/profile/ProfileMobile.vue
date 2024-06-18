@@ -16,8 +16,8 @@ const userStore = useUserStore()
 </script>
 
 <template>
-  <div>
-    <div class="py-4 px-8 lg:hidden">
+  <div class="lg:hidden">
+    <div class="py-4 px-8">
       <RouterLink v-if="!currentModal" :to="{ name: 'feed' }"><IconReturn /></RouterLink>
       <IconReturn v-else @click="currentModal = null" class="cursor-pointer" />
     </div>
