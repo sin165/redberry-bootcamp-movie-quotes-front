@@ -26,6 +26,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
+            export NODE_OPTIONS='--max-old-space-size=4096'
             cd apps
             cd front-movie-quotes-tamar-sinauridze
             git pull
