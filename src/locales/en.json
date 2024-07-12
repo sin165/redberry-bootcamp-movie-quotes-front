@@ -88,5 +88,8 @@
   "enter_new_pass": "Enter new password",
   "confirm_new_pass": "Confirm new password",
   "are_you_sure_to_make_changes": "Are you sure to make changes ?",
-  "changes_updated": "Changes updated successfully"
+  "changes_updated": "Changes updated successfully",
+  "my_list_of_movies": "My list of movies",
+  "total": "Total",
+  "add_movie": "Add movie"
 }

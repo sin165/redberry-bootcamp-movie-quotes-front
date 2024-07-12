@@ -88,5 +88,8 @@
   "enter_new_pass": "შეიყვანე ახალი პაროლი",
   "confirm_new_pass": "გაიმეორე ახალი პაროლი",
   "are_you_sure_to_make_changes": "დარწმუნებული ხართ?",
-  "changes_updated": "ცვლილებები წარმატებით შეინახა"
+  "changes_updated": "ცვლილებები წარმატებით შეინახა",
+  "my_list_of_movies": "ჩემი ფილმების სია",
+  "total": "სულ",
+  "add_movie": "დამატება"
 }

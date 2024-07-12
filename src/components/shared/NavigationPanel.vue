@@ -3,6 +3,7 @@ import UserAvatar from '@/components/shared/UserAvatar.vue'
 import IconHouse from '@/components/icons/IconHouse.vue'
 import IconCamera from '@/components/icons/IconCamera.vue'
 import { useUserStore } from '@/store/UserStore'
+import { RouterLink } from 'vue-router'
 
 const userStore = useUserStore()
 </script>
@@ -33,13 +34,16 @@ const userStore = useUserStore()
         {{ $t('button.news_feed') }}
       </h2>
     </RouterLink>
-    <a class="group flex items-center gap-5 lg:gap-6 mt-11 w-max hover:text-gray-dark">
+    <RouterLink
+      :to="{ name: 'list' }"
+      class="group flex items-center gap-5 lg:gap-6 mt-11 w-max hover:text-gray-dark"
+    >
       <div class="w-10 lg:w-15">
         <IconCamera class="ml-2 group-[.router-link-active]:text-crimson" />
       </div>
       <h2 class="text-xl lg:text-2xl group-[.router-link-active]:text-white">
         {{ $t('button.list_of_movies') }}
       </h2>
-    </a>
+    </RouterLink>
   </nav>
 </template>
