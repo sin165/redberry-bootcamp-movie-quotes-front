@@ -17,18 +17,18 @@ jobs:
         run: npm ci
       - name: run linter
         run: npm run lint
-      - name: Deploy to Server
-        if: ${{ success() }}
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script_stop: true
-          script: |
-            export NODE_OPTIONS='--max-old-space-size=4096'
-            cd apps
-            cd front-movie-quotes-tamar-sinauridze
-            git pull
-            npm ci
-            npm run build
+      # - name: Deploy to Server
+      #   if: ${{ success() }}
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_USERNAME }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     script_stop: true
+      #     script: |
+      #       export NODE_OPTIONS='--max-old-space-size=4096'
+      #       cd apps
+      #       cd front-movie-quotes-tamar-sinauridze
+      #       git pull
+      #       npm ci
+      #       npm run build
